@@ -1,11 +1,14 @@
-from flask import Flask
+from flask import Flask, render_template
 
 application = Flask(__name__)
 
 
 @application.route("/")
-def index():
-    myfile = open("index.html", mode='r')
-    page   = myfile.read()
-    myfile.close()
-    return page
+def root():
+    return render_template("index.html")
+
+#--------Main------------------
+if __name__ == "__main__":
+    application.debug = True
+    application.run()
+#------------------------------
